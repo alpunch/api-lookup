@@ -1,7 +1,9 @@
 # Compiled files
 *.tfstate
 *.tfstate.backup
-provider.tf
+
+# Secrets
+secret.provider.auto.tfvars
 
 # Module directory
 .terraform/
