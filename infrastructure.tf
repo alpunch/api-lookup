@@ -17,7 +17,7 @@ resource "aws_instance" "node" {
     
     # This is where we configure the instance with ansible-playbook
     provisioner "local-exec" {
-        command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key /home/$USER/.ssh/id-rsa.pub -i '${aws_instance.node.public_ip},' playbook.yml"
+        command = "sleep 60; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key /home/$USER/.ssh/id_rsa -i '${aws_instance.node.public_ip},' playbook.yml"
     }
 
 }
