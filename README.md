@@ -2,7 +2,7 @@
 
 ## Pre-flight check-list
 
-### Credentials
+## Credentials
 
 Lookup AWS credentials.
 Rename "secret.provider.auto.example" to "secret.provider.auto.tfvars".
@@ -13,4 +13,12 @@ Lookup Cloudflare credentials.
 Open "secret.provider.auto.tfvars".
 Replace the example values with your correct credentials.
 
-### Configuration
+## Configuration
+
+terraform init
+
+terraform plan
+
+## Usage
+
+terraform apply
