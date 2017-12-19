@@ -20,3 +20,5 @@ terraform init
 terraform plan
 
 ## Usage
+
+terraform apply

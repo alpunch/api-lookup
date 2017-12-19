@@ -17,8 +17,8 @@ resource "aws_instance" "node" {
 
     provisioner "remote-exec" {
       inline = [
-        "sudo apt-get update -qy",
-        "sudo apt-get install -qy python",
+        "sleep 30; sudo apt-get update && sudo apt-get install -qy python",
+        "python --version",
       ]
 
       connection {
@@ -30,7 +30,7 @@ resource "aws_instance" "node" {
     
     # This is where we configure the instance with ansible-playbook
     provisioner "local-exec" {
-        command = "sleep 30; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key /home/$USER/.ssh/id_rsa -i '${aws_instance.node.public_ip},' playbook.yml"
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key /home/$USER/.ssh/id_rsa -i '${aws_instance.node.public_ip},' playbook.yml"
     }
 
 }
