@@ -1,0 +1,8 @@
+---
+# This role contains common plays that will install api-lookup on a docker-node.
+
+- name: Deploy api-lookup
+  docker_container:
+    name: api-lookup
+    image: ravenstorm/api-lookup
+    state: present
