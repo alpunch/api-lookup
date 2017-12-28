@@ -12,7 +12,7 @@
 - name: Deploy api-lookup
   docker_container:
     name: api-lookup
-    image: "ravenstorm/api-lookup:latest"
+    image: "ravenstorm/api-lookup:stable"
     ports: "80:80"
     state: started
   become: yes
