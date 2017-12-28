@@ -1,0 +1,18 @@
+---
+# This role contains common plays that will install api-lookup on a docker-node.
+
+- name: Get pip
+  shell: "cd /tmp && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py"
+  become: yes
+
+- name: Install docker-py
+  shell: "pip install docker-py"
+  become: yes
+
+- name: Deploy api-lookup
+  docker_container:
+    name: api-lookup
+    image: "ravenstorm/api-lookup:latest"
+    ports: "80:80"
+    state: started
+  become: yes
