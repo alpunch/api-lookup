@@ -5,7 +5,7 @@
 
 # Secrets
 *secret.provider.auto.tfvars
-*secret*
+*secret.provider.json
 
 # Ansible
 *.retry
