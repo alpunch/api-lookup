@@ -1,10 +1,31 @@
-# Global vars declaration
-variable "region" {}
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+variable "aws_key_path" {}
+variable "aws_key_name" {}
 
-# Instance vars declaration
+variable "aws_region" {
+    description = "EC2 Region for the VPC"
+    default = "eu-west-1"
+}
+
 variable "availability_zones" {
   default     = "eu-west-1a,eu-west-1b"
-  description = "List of availability zones, use AWS CLI to find yours"
+  description = "List of availability zones"
+}
+
+variable "vpc_cidr" {
+    description = "CIDR for the whole VPC"
+    default = "10.0.0.0/16"
+}
+
+variable "public_subnet_cidr" {
+    description = "CIDR for the Public Subnet"
+    default = "10.0.0.0/24"
+}
+
+variable "private_subnet_cidr" {
+    description = "CIDR for the Private Subnet"
+    default = "10.0.10.0/24"
 }
 
 # Get latest AMI packer-linux-aws-docker-latest
@@ -41,7 +62,7 @@ resource "aws_autoscaling_group" "docker-master-asg" {
     key                 = "Name"
     value               = "docker-master-asg"
     propagate_at_launch = "true"
-}
+  }
 }
 
 # Creating Swarm node asg
@@ -74,7 +95,6 @@ resource "aws_instance" "node" {
     
    # This is where we configure the instance with ansible-playbook
   provisioner "local-exec" {
-      command = "sleep 30; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key /home/$USER/.ssh/id_rsa -i '${aws_instance.node.public_ip},' playbook.yml"
+      command = "sleep 30; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --private-key /home/$USER/.ssh/id_rsa -i '${aws_instance.node.public_ip},' ../ansible/playbook.yml"
   }
-
 }
