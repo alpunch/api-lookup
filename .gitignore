@@ -1,6 +1,7 @@
 # Compiled files
 *.tfstate
 *.tfstate.backup
+*.terraform.tfstate.lock.info
 
 # Secrets
 secret.provider.auto.tfvars
