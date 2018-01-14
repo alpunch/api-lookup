@@ -1,0 +1,42 @@
+{
+	"info": {
+		"name": "api-lookup doc",
+		"_postman_id": "0a70e1e7-e93d-db11-8731-40988fc32df2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://54.194.201.114/search/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"q\": \"11 impasse canart\", \"hn\": \"11\", \"st\": \"Impasse Canart\", \"pc\": \"75012\", \"ct\": \"Paris\", \"limit\": \"1\" }"
+				},
+				"url": {
+					"raw": "http://54.194.201.114/search/",
+					"protocol": "http",
+					"host": [
+						"54",
+						"194",
+						"201",
+						"114"
+					],
+					"path": [
+						"search",
+						""
+					]
+				},
+				"description": "Test API"
+			},
+			"response": []
+		}
+	]
+}
